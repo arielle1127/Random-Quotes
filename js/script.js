@@ -3,6 +3,8 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
+const main = document.querySelector('main');
+
 const quotes = [
   {
     quote: 'If your compassion does not include yourself, it is incomplete.',
@@ -30,12 +32,6 @@ const quotes = [
 
 console.log(quotes);
 
-/***
- * `getRandomQuote` function
- * use Math.floor, Math.random and the length of the quotes array to generate a random number,
- *  use bracket notation and the random number variable to grab a quote object from the quotes array, 
- * lastly, return the random quote object.
-*/
 
 function getRandomQuote() {
     let randomNumber = Math.floor(Math.random() * quotes.length);
@@ -45,75 +41,64 @@ function getRandomQuote() {
 }
 getRandomQuote();
 
-/***
- * `printQuote` function 
-        -used to display a new quote each time the user clicks the "Show another quote" button 
-        - Create a function named printQuote.
-      3 tasks: 
-          1. call the getRandomQuote function
-          2. use the returned quote object to build a string of HTML and quote properties
-          3. then use that string to display a random quote in the browser.*/
+//I can only get the html to work when i put the document.getelementByID inside the function.
+//It wasn't working outside the function because the html variable was in the scope of the function
+//Is this right or is there a better way?
 
 function printQuote() {
-    
+    let randomquoteObj = getRandomQuote();
+    let html = `<p class="quote">${randomquoteObj.quote}</p>
+                <p class="source">${randomquoteObj.source}<p>`;
+      document.getElementById('quote-box').innerHTML = html;
 }
 printQuote();
 
 
 
-/*create a variable to store a random quote object from the getRandomQuote() function.
 
-Create another variable to store the HTML string. 
-      1. Set it equal to a string containing two <p> elements. 
-      2. Use this code snippet as a guide for what the HTML string should look like at this point:
-            <p class="quote"> A random quote </p>
-            <p class="source"> quote source </p>
-The first <p> element should have a class equal to “quote”, and the random quote object’s .quote property nested between the opening and closing <p> tags.
-The second <p> element should have a class equal to “source”, and the random quote object’s .source property nested between the tags.
+ 
+/* 
 
-Important Notes:
-Do not include the second closing </p> tag for now – you will add it at the end of this step.
-You can use template literals here if you’re comfortable with that approach. But if you use traditional strings instead, 
-be sure to wrap the strings in single quotes, so that the HTML classes can use their recommended double quotes.*/
+Create two separate if statements below the variables. You will need to add decision making to this function:
+Use an if statement to check if the citation property exists, and if it does, concatenate a <span></span> element, appropriate className, and citation property to the HTML string
+* If the random quote object has a citation property, concatenate a <span> element with the class "citation" to the HTML string.
 
-
-//`<p class="quote">${randomQuote}`;
+ Use an if statement to check of the year property exists, and if it does, concatenate a <span></span> element, appropriate className, and year property to the HTML 
+ If the random quote object has a year property, concatenate a <span> element with the class "year" to the HTML string.
+ 
+ After the two if statements, concatenate the closing </p> tag to the HTML string
+set the innerHTML of the quote-box div to equal the complete HTML string*/ 
 
 
+if () {
+
+};
 
 
+ 
+
+/*Use the following code snippet as a guide for what the HTML string should look like with the added "citation" and "year" <span> elements 
+(like earlier, omit the second closing </p> tag for now):
 
 
+<p class="quote"> A random quote </p>
+<p class="source"> quote source
+  <span class="citation"> quote citation </span>
+  <span class="year"> quote year </span>
+</p>
 
+Below the if statements, complete the string by concatenating a closing </p> tag to the HTML string.
+ This is the closing tag for the second paragraph with the class source.
 
-
-
-
-
-
-
-
-//let shuffle = getRandomQuote;
-
-
-
-//let written = <p class="quote"randomQuote.quote></p> <p class="source">randomQuote.source</p>
-
+Lastly, set the printQuote function to return the full HTML string displaying a random quote.
 
 
 
 
-
-
-
-
-
-
-
-
+/* 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
-***/
+***/ 
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
