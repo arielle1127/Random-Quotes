@@ -1,2 +1,2 @@
-# Random Quotes
- Project 1
+# Random Quote Generator
+Treehouse Techdegree; Fullstack JavaScript; Project 1
